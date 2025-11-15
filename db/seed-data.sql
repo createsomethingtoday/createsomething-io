@@ -367,6 +367,126 @@ For full implementation details, code examples, architecture diagrams, and produ
   '2025-11-15T00:00:00.000Z'
 );
 
+INSERT INTO papers (
+  id, title, category, content, html_content, reading_time, difficulty_level,
+  technical_focus, published_on, excerpt_short, excerpt_long, slug, featured,
+  published, is_hidden, archived, date, excerpt, description, thumbnail_image,
+  featured_card_image, featured_image, video_walkthrough_url, interactive_demo_url,
+  resource_downloads, prerequisites, meta_title, meta_description, focus_keywords,
+  created_at, updated_at, published_at
+) VALUES (
+  'a7b8c9d0-1234-5678-gabc-789012345678',
+  'Privacy-Enhanced Analytics for Creator Marketplaces',
+  'analytics',
+  '# Privacy-Enhanced Analytics for Creator Marketplaces
+
+**Experiment ID:** EXP-002-ASSET-DASHBOARD
+**Date:** November 2024
+**Status:** ✅ Production
+**Category:** Analytics, Privacy, Data Aggregation, Creator Economy
+**Stack:** Next.js, Airtable, Census, Snowflake, Framer Motion
+
+---
+
+## Abstract
+
+Creator marketplaces face a fundamental tension: creators need competitive market intelligence to make strategic decisions, but exposing individual financial performance creates privacy concerns and potential competitive disadvantages. This experiment implements a privacy-enhanced analytics system that provides actionable market insights through aggregate category-level data while protecting individual creator financial information. The system achieved real-time market intelligence delivery (weekly sync vs. monthly newsletters) with zero privacy violations and 73% reduction in creator support requests about marketplace trends.
+
+**Problem:** Webflow marketplace creators relied on monthly newsletters for marketplace trends, creating delayed intelligence and high support request volume. Publishing individual template financial data in leaderboards exposed creator revenue, violating privacy expectations.
+
+**Solution:** Privacy-first analytics dashboard aggregating category-level data, automated insight generation (trends, opportunities, warnings), weekly data sync from Snowflake via Census, and personalized recommendations without financial exposure.
+
+**Key Findings:**
+- Category aggregates provide market intelligence without privacy violations
+- Automated insight generation (3 types: trends, opportunities, warnings) replaced manual newsletter curation
+- Weekly sync reduced data staleness from 30 days to <7 days
+- Zero individual financial exposure while maintaining competitive context
+
+---
+
+## Tracked Metrics
+
+### Development Metrics
+- **Development Time:** ~18 hours
+- **API Costs:** $0 (reused existing infrastructure)
+- **Errors Encountered:** ~5 major issues
+
+### Performance Metrics
+- **API Response Times:** 200-500ms per endpoint
+- **Total Load Time:** ~800ms (parallel fetch)
+- **Data Freshness:** <7 days (vs. 30-day newsletter delay)
+- **Support Request Reduction:** 73%
+
+For full implementation details, privacy-enhanced data model, automated insight generation algorithm, and production learnings, see the complete research paper.',
+  '# Privacy-Enhanced Analytics for Creator Marketplaces
+
+**Experiment ID:** EXP-002-ASSET-DASHBOARD
+**Date:** November 2024
+**Status:** ✅ Production
+**Category:** Analytics, Privacy, Data Aggregation, Creator Economy
+**Stack:** Next.js, Airtable, Census, Snowflake, Framer Motion
+
+---
+
+## Abstract
+
+Creator marketplaces face a fundamental tension: creators need competitive market intelligence to make strategic decisions, but exposing individual financial performance creates privacy concerns and potential competitive disadvantages. This experiment implements a privacy-enhanced analytics system that provides actionable market insights through aggregate category-level data while protecting individual creator financial information. The system achieved real-time market intelligence delivery (weekly sync vs. monthly newsletters) with zero privacy violations and 73% reduction in creator support requests about marketplace trends.
+
+**Problem:** Webflow marketplace creators relied on monthly newsletters for marketplace trends, creating delayed intelligence and high support request volume. Publishing individual template financial data in leaderboards exposed creator revenue, violating privacy expectations.
+
+**Solution:** Privacy-first analytics dashboard aggregating category-level data, automated insight generation (trends, opportunities, warnings), weekly data sync from Snowflake via Census, and personalized recommendations without financial exposure.
+
+**Key Findings:**
+- Category aggregates provide market intelligence without privacy violations
+- Automated insight generation (3 types: trends, opportunities, warnings) replaced manual newsletter curation
+- Weekly sync reduced data staleness from 30 days to <7 days
+- Zero individual financial exposure while maintaining competitive context
+
+---
+
+## Tracked Metrics
+
+### Development Metrics
+- **Development Time:** ~18 hours
+- **API Costs:** $0 (reused existing infrastructure)
+- **Errors Encountered:** ~5 major issues
+
+### Performance Metrics
+- **API Response Times:** 200-500ms per endpoint
+- **Total Load Time:** ~800ms (parallel fetch)
+- **Data Freshness:** <7 days (vs. 30-day newsletter delay)
+- **Support Request Reduction:** 73%
+
+For full implementation details, privacy-enhanced data model, automated insight generation algorithm, and production learnings, see the complete research paper.',
+  20,
+  'Intermediate',
+  'Analytics, Privacy, Data Aggregation, Census, Snowflake, Airtable, Next.js, Creator Economy, Automated Insights',
+  '2024-11-15',
+  'Privacy-first analytics system for creator marketplaces balancing competitive intelligence with financial privacy through category aggregates.',
+  'Discover how to build privacy-enhanced analytics for creator marketplaces. This experiment achieved 73% support request reduction and 77% data freshness improvement while protecting individual creator financial data. Demonstrates privacy-preserving competitive intelligence through category aggregation and automated insight generation.',
+  'privacy-enhanced-analytics-marketplaces',
+  1,
+  1,
+  0,
+  0,
+  '2024-11-15',
+  'Privacy-first analytics system for creator marketplaces balancing competitive intelligence with financial privacy through category aggregates.',
+  'Discover how to build privacy-enhanced analytics for creator marketplaces. This experiment achieved 73% support request reduction and 77% data freshness improvement while protecting individual creator financial data. Demonstrates privacy-preserving competitive intelligence through category aggregation and automated insight generation.',
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  'Privacy-Enhanced Analytics for Creator Marketplaces | Create Something',
+  'Privacy-first analytics system balancing competitive market intelligence with creator financial privacy through category aggregates and automated insights.',
+  'Analytics, Privacy, Data Aggregation, Census, Snowflake, Airtable, Creator Economy, Marketplace Intelligence, Automated Insights, Next.js',
+  '2025-11-15T00:00:00.000Z',
+  '2025-11-15T00:00:00.000Z',
+  '2025-11-15T00:00:00.000Z'
+);
+
 -- Insert Sample Tags
 INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-001', 'Automation', 'automation', '2025-11-14T17:24:25.590Z');
 INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-002', 'Webflow', 'webflow', '2025-11-14T17:24:25.590Z');
@@ -377,6 +497,10 @@ INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-006', 'Authentication
 INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-007', 'Edge Functions', 'edge-functions', '2025-11-15T00:00:00.000Z');
 INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-008', 'Caching', 'caching', '2025-11-15T00:00:00.000Z');
 INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-009', 'Security', 'security', '2025-11-15T00:00:00.000Z');
+INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-010', 'Analytics', 'analytics', '2025-11-15T00:00:00.000Z');
+INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-011', 'Privacy', 'privacy', '2025-11-15T00:00:00.000Z');
+INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-012', 'Data Aggregation', 'data-aggregation', '2025-11-15T00:00:00.000Z');
+INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-013', 'Creator Economy', 'creator-economy', '2025-11-15T00:00:00.000Z');
 
 -- Link Papers to Tags
 INSERT INTO paper_tags (paper_id, tag_id) VALUES ('a1b2c3d4-e5f6-7890-abcd-ef1234567890', 'tag-001');
@@ -392,6 +516,12 @@ INSERT INTO paper_tags (paper_id, tag_id) VALUES ('f6a7b8c9-0123-4567-fabc-67890
 INSERT INTO paper_tags (paper_id, tag_id) VALUES ('f6a7b8c9-0123-4567-fabc-678901234567', 'tag-007');
 INSERT INTO paper_tags (paper_id, tag_id) VALUES ('f6a7b8c9-0123-4567-fabc-678901234567', 'tag-008');
 INSERT INTO paper_tags (paper_id, tag_id) VALUES ('f6a7b8c9-0123-4567-fabc-678901234567', 'tag-009');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('a7b8c9d0-1234-5678-gabc-789012345678', 'tag-004');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('a7b8c9d0-1234-5678-gabc-789012345678', 'tag-005');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('a7b8c9d0-1234-5678-gabc-789012345678', 'tag-010');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('a7b8c9d0-1234-5678-gabc-789012345678', 'tag-011');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('a7b8c9d0-1234-5678-gabc-789012345678', 'tag-012');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('a7b8c9d0-1234-5678-gabc-789012345678', 'tag-013');
 
 -- Create Demo User
 INSERT INTO users (
