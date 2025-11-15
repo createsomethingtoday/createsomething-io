@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExperimentsIndexRouteImport } from './routes/experiments.index'
 import { Route as PapersSlugRouteImport } from './routes/papers/$slug'
 import { Route as ExperimentsSlugRouteImport } from './routes/experiments.$slug'
 import { Route as CategorySlugRouteImport } from './routes/category/$slug'
@@ -70,6 +71,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ExperimentsIndexRoute = ExperimentsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ExperimentsRoute,
 } as any)
 const PapersSlugRoute = PapersSlugRouteImport.update({
   id: '/papers/$slug',
@@ -152,6 +158,7 @@ export interface FileRoutesByFullPath {
   '/category/$slug': typeof CategorySlugRoute
   '/experiments/$slug': typeof ExperimentsSlugRoute
   '/papers/$slug': typeof PapersSlugRoute
+  '/experiments/': typeof ExperimentsIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -165,7 +172,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/categories': typeof CategoriesRoute
   '/contact': typeof ContactRoute
-  '/experiments': typeof ExperimentsRouteWithChildren
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -175,6 +181,7 @@ export interface FileRoutesByTo {
   '/category/$slug': typeof CategorySlugRoute
   '/experiments/$slug': typeof ExperimentsSlugRoute
   '/papers/$slug': typeof PapersSlugRoute
+  '/experiments': typeof ExperimentsIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -199,6 +206,7 @@ export interface FileRoutesById {
   '/category/$slug': typeof CategorySlugRoute
   '/experiments/$slug': typeof ExperimentsSlugRoute
   '/papers/$slug': typeof PapersSlugRoute
+  '/experiments/': typeof ExperimentsIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -224,6 +232,7 @@ export interface FileRouteTypes {
     | '/category/$slug'
     | '/experiments/$slug'
     | '/papers/$slug'
+    | '/experiments/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -237,7 +246,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/categories'
     | '/contact'
-    | '/experiments'
     | '/methodology'
     | '/privacy'
     | '/terms'
@@ -247,6 +255,7 @@ export interface FileRouteTypes {
     | '/category/$slug'
     | '/experiments/$slug'
     | '/papers/$slug'
+    | '/experiments'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -270,6 +279,7 @@ export interface FileRouteTypes {
     | '/category/$slug'
     | '/experiments/$slug'
     | '/papers/$slug'
+    | '/experiments/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -359,6 +369,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/experiments/': {
+      id: '/experiments/'
+      path: '/'
+      fullPath: '/experiments/'
+      preLoaderRoute: typeof ExperimentsIndexRouteImport
+      parentRoute: typeof ExperimentsRoute
     }
     '/papers/$slug': {
       id: '/papers/$slug'
@@ -456,10 +473,12 @@ declare module '@tanstack/react-router' {
 
 interface ExperimentsRouteChildren {
   ExperimentsSlugRoute: typeof ExperimentsSlugRoute
+  ExperimentsIndexRoute: typeof ExperimentsIndexRoute
 }
 
 const ExperimentsRouteChildren: ExperimentsRouteChildren = {
   ExperimentsSlugRoute: ExperimentsSlugRoute,
+  ExperimentsIndexRoute: ExperimentsIndexRoute,
 }
 
 const ExperimentsRouteWithChildren = ExperimentsRoute._addFileChildren(
