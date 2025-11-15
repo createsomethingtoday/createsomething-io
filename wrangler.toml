@@ -1,0 +1,49 @@
+name = "create-something-tanstack"
+main = "dist/server/index.js"
+compatibility_date = "2024-11-14"
+
+# D1 Database Bindings
+[[d1_databases]]
+binding = "DB"
+database_name = "create-something-db"
+database_id = "a74e70ae-6a94-43da-905e-b90719c8dfd2"
+
+# KV Namespace Bindings
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "973b18397c4d4b068313152a642f1ad5"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "bcb39a6258fe49b79da9dc9b09440934"
+
+# R2 Bucket Binding (for file storage)
+[[r2_buckets]]
+binding = "STORAGE"
+bucket_name = "create-something-assets"
+
+# Build configuration
+[build]
+command = "npm run build"
+
+# Development server
+[dev]
+port = 3000
+local_protocol = "http"
+
+# Environment Variables for Production (set via Cloudflare Dashboard)
+# RESEND_API_KEY - Set this via: wrangler secret put RESEND_API_KEY
+# FROM_EMAIL - Set this via Dashboard or wrangler.toml vars section
+
+# Custom domains must be added via Cloudflare Dashboard:
+# 1. Go to https://dash.cloudflare.com
+# 2. Navigate to Workers & Pages
+# 3. Click on 'create-something-tanstack'
+# 4. Go to Settings > Domains & Routes
+# 5. Click 'Add' next to "Custom Domains"
+# 6. Add: createsomething.io
+# 7. Add: www.createsomething.io
+
+# To set RESEND_API_KEY for production:
+# npx wrangler secret put RESEND_API_KEY
+# (Enter the key when prompted)

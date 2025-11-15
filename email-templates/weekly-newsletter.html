@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #000000; color: #ffffff; }
+    .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+    .header { text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .logo { font-size: 24px; font-weight: bold; color: #ffffff; margin-bottom: 10px; }
+    .content { line-height: 1.8; }
+    .content h1 { font-size: 28px; margin-bottom: 10px; color: #ffffff; }
+    .content h2 { font-size: 20px; margin-top: 40px; margin-bottom: 15px; color: #ffffff; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; }
+    .content p { color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; }
+    .experiment-card { background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 24px; margin: 20px 0; }
+    .experiment-card h3 { margin-top: 0; color: #ffffff; font-size: 18px; }
+    .metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
+    .metric { text-align: center; background-color: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 6px; }
+    .metric-value { font-size: 24px; font-weight: bold; color: #ffffff; margin-bottom: 5px; }
+    .metric-label { font-size: 12px; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.5px; }
+    .cta-button { display: inline-block; padding: 12px 28px; background-color: #ffffff; color: #000000; text-decoration: none; border-radius: 50px; font-weight: 600; margin: 20px 0; }
+    .cta-button:hover { background-color: rgba(255, 255, 255, 0.9); }
+    .footer { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; color: rgba(255, 255, 255, 0.4); font-size: 14px; }
+    .footer a { color: rgba(255, 255, 255, 0.6); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">CREATE SOMETHING</div>
+      <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">{{{ISSUE_DATE}}}</p>
+    </div>
+
+    <div class="content">
+      <h1>{{{NEWSLETTER_TITLE}}}</h1>
+      <p style="color: rgba(255, 255, 255, 0.6); font-style: italic;">{{{NEWSLETTER_SUBTITLE}}}</p>
+
+      <p>{{{INTRO_TEXT}}}</p>
+
+      <h2>📊 Latest Experiment</h2>
+
+      <div class="experiment-card">
+        <h3>{{{EXPERIMENT_TITLE}}}</h3>
+        <p>{{{EXPERIMENT_DESCRIPTION}}}</p>
+
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-value">{{{TIME_HOURS}}}h</div>
+            <div class="metric-label">Development Time</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">{{{ERROR_COUNT}}}</div>
+            <div class="metric-label">Errors Fixed</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">${{{TOTAL_COST}}}</div>
+            <div class="metric-label">Total Cost</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">{{{SAVINGS_PERCENT}}}%</div>
+            <div class="metric-label">Time Savings</div>
+          </div>
+        </div>
+
+        <p><strong>Key Learning:</strong> {{{KEY_LEARNING}}}</p>
+
+        <a href="{{{EXPERIMENT_URL}}}" class="cta-button">Read Full Experiment →</a>
+      </div>
+
+      <h2>💡 What I'm Learning</h2>
+
+      <p>{{{LEARNING_1}}}</p>
+      <p>{{{LEARNING_2}}}</p>
+
+      <h2>🔗 Worth Reading</h2>
+
+      <ul style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">
+        <li><a href="{{{FEATURED_LINK_URL}}}" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3);">{{{FEATURED_LINK_TITLE}}}</a> — {{{FEATURED_LINK_DESC}}}</li>
+      </ul>
+
+      <h2>🚀 Next Experiment</h2>
+
+      <p>{{{NEXT_TEASER}}}</p>
+
+      <p style="margin-top: 40px;">
+        Thanks for reading,<br><br>
+        — Micah Johnson<br>
+        <span style="color: rgba(255, 255, 255, 0.4); font-size: 14px;">CREATE SOMETHING</span>
+      </p>
+    </div>
+
+    <div class="footer">
+      <p>
+        <a href="https://createsomething.io">createsomething.io</a> •
+        <a href="https://createsomething.io/methodology">Methodology</a> •
+        <a href="{{{UNSUBSCRIBE_URL}}}">Unsubscribe</a>
+      </p>
+      <p style="margin-top: 10px;">You're receiving this because you subscribed to CREATE SOMETHING</p>
+    </div>
+  </div>
+</body>
+</html>

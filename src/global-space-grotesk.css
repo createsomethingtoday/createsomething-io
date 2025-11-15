@@ -1,0 +1,39 @@
+/*
+  Alternative FREE font setup using Space Grotesk
+  Similar geometric aesthetic to Stack Sans
+  Google Fonts - No license required
+*/
+
+/* Import Space Grotesk (FREE alternative to Stack Sans) and JetBrains Mono */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* Modern base styles - Space Grotesk */
+body {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+}
+
+/* Headings - same font, bolder weights */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Code elements */
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+}
+
+/* Rest of your styles remain the same... */
