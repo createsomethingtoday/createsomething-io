@@ -93,10 +93,17 @@ export const Route = createFileRoute('/experiments/$slug')({
       ],
     }
   },
-  loader: async ({ context, params }) => {
+  loader: async ({ context, params, response }) => {
     try {
       const env = (context as any).env as Env
       const { slug } = params
+
+      // Force cache revalidation for experiment content
+      if (response) {
+        response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')
+        response.headers.set('Pragma', 'no-cache')
+        response.headers.set('Expires', '0')
+      }
 
       // Check if DB is available (production/wrangler dev)
       if (!env?.DB) {
