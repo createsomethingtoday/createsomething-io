@@ -18,6 +18,7 @@ import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PapersSlugRouteImport } from './routes/papers/$slug'
+import { Route as ExperimentsSlugRouteImport } from './routes/experiments/$slug'
 import { Route as CategorySlugRouteImport } from './routes/category/$slug'
 import { Route as ApiTerminalRouteImport } from './routes/api/terminal'
 import { Route as ApiNewsletterRouteImport } from './routes/api/newsletter'
@@ -74,6 +75,11 @@ const PapersSlugRoute = PapersSlugRouteImport.update({
   id: '/papers/$slug',
   path: '/papers/$slug',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ExperimentsSlugRoute = ExperimentsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ExperimentsRoute,
 } as any)
 const CategorySlugRoute = CategorySlugRouteImport.update({
   id: '/category/$slug',
@@ -136,7 +142,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/categories': typeof CategoriesRoute
   '/contact': typeof ContactRoute
-  '/experiments': typeof ExperimentsRoute
+  '/experiments': typeof ExperimentsRouteWithChildren
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/api/newsletter': typeof ApiNewsletterRoute
   '/api/terminal': typeof ApiTerminalRoute
   '/category/$slug': typeof CategorySlugRoute
+  '/experiments/$slug': typeof ExperimentsSlugRoute
   '/papers/$slug': typeof PapersSlugRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -158,7 +165,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/categories': typeof CategoriesRoute
   '/contact': typeof ContactRoute
-  '/experiments': typeof ExperimentsRoute
+  '/experiments': typeof ExperimentsRouteWithChildren
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByTo {
   '/api/newsletter': typeof ApiNewsletterRoute
   '/api/terminal': typeof ApiTerminalRoute
   '/category/$slug': typeof CategorySlugRoute
+  '/experiments/$slug': typeof ExperimentsSlugRoute
   '/papers/$slug': typeof PapersSlugRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -181,7 +189,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/categories': typeof CategoriesRoute
   '/contact': typeof ContactRoute
-  '/experiments': typeof ExperimentsRoute
+  '/experiments': typeof ExperimentsRouteWithChildren
   '/methodology': typeof MethodologyRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -189,6 +197,7 @@ export interface FileRoutesById {
   '/api/newsletter': typeof ApiNewsletterRoute
   '/api/terminal': typeof ApiTerminalRoute
   '/category/$slug': typeof CategorySlugRoute
+  '/experiments/$slug': typeof ExperimentsSlugRoute
   '/papers/$slug': typeof PapersSlugRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -213,6 +222,7 @@ export interface FileRouteTypes {
     | '/api/newsletter'
     | '/api/terminal'
     | '/category/$slug'
+    | '/experiments/$slug'
     | '/papers/$slug'
     | '/demo/api/names'
     | '/demo/start/api-request'
@@ -235,6 +245,7 @@ export interface FileRouteTypes {
     | '/api/newsletter'
     | '/api/terminal'
     | '/category/$slug'
+    | '/experiments/$slug'
     | '/papers/$slug'
     | '/demo/api/names'
     | '/demo/start/api-request'
@@ -257,6 +268,7 @@ export interface FileRouteTypes {
     | '/api/newsletter'
     | '/api/terminal'
     | '/category/$slug'
+    | '/experiments/$slug'
     | '/papers/$slug'
     | '/demo/api/names'
     | '/demo/start/api-request'
@@ -272,7 +284,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CategoriesRoute: typeof CategoriesRoute
   ContactRoute: typeof ContactRoute
-  ExperimentsRoute: typeof ExperimentsRoute
+  ExperimentsRoute: typeof ExperimentsRouteWithChildren
   MethodologyRoute: typeof MethodologyRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
@@ -355,6 +367,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PapersSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experiments/$slug': {
+      id: '/experiments/$slug'
+      path: '/$slug'
+      fullPath: '/experiments/$slug'
+      preLoaderRoute: typeof ExperimentsSlugRouteImport
+      parentRoute: typeof ExperimentsRoute
+    }
     '/category/$slug': {
       id: '/category/$slug'
       path: '/category/$slug'
@@ -435,12 +454,24 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ExperimentsRouteChildren {
+  ExperimentsSlugRoute: typeof ExperimentsSlugRoute
+}
+
+const ExperimentsRouteChildren: ExperimentsRouteChildren = {
+  ExperimentsSlugRoute: ExperimentsSlugRoute,
+}
+
+const ExperimentsRouteWithChildren = ExperimentsRoute._addFileChildren(
+  ExperimentsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CategoriesRoute: CategoriesRoute,
   ContactRoute: ContactRoute,
-  ExperimentsRoute: ExperimentsRoute,
+  ExperimentsRoute: ExperimentsRouteWithChildren,
   MethodologyRoute: MethodologyRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
