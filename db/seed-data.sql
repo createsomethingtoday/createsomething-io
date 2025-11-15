@@ -217,12 +217,166 @@ INSERT INTO papers (
   '2025-11-14T17:24:25.590Z'
 );
 
+INSERT INTO papers (
+  id, title, category, content, html_content, reading_time, difficulty_level,
+  technical_focus, published_on, excerpt_short, excerpt_long, slug, featured,
+  published, is_hidden, archived, date, excerpt, description, thumbnail_image,
+  featured_card_image, featured_image, video_walkthrough_url, interactive_demo_url,
+  resource_downloads, prerequisites, meta_title, meta_description, focus_keywords,
+  created_at, updated_at, published_at
+) VALUES (
+  'f6a7b8c9-0123-4567-fabc-678901234567',
+  'API Key Authentication for Edge Functions',
+  'authentication',
+  '# API Key Authentication for Edge Functions with Vercel KV Caching
+
+**Experiment ID:** EXP-001-ASSET-DASHBOARD
+**Date:** November 2024
+**Status:** ✅ Production
+**Category:** Authentication, Edge Computing, API Security
+**Stack:** Next.js, Vercel KV, Airtable, SHA256
+
+---
+
+## Abstract
+
+Creator-facing platforms often need secure programmatic access to user data for external integrations. This experiment implements a production-ready API key authentication system optimized for serverless edge functions, demonstrating a pattern for secure, performant API access without traditional database infrastructure. The system achieved 95% cache hit rate reducing Airtable API calls from 1,000/hour to ~50/hour while maintaining sub-100ms authentication latency.
+
+**Problem:** Enable Webflow template marketplace creators to programmatically access their template data for external portfolio sites without exposing sensitive operations or creating performance bottlenecks.
+
+**Solution:** SHA256-hashed API keys with Vercel KV caching (1-hour TTL), scope-based permissions, and rate limiting (100 req/hour free tier, sliding window algorithm).
+
+**Key Findings:**
+- Vercel KV caching reduced authentication overhead by 95%
+- SHA256 + one-time display provided security without UX friction
+- Sliding window rate limiting prevented abuse while allowing legitimate burst traffic
+- Zero additional database costs (reused existing Airtable infrastructure)
+
+---
+
+## Tracked Metrics
+
+### Development Metrics
+- **Development Time:** ~22 hours (retroactively estimated from git commits)
+  - API key middleware: 6 hours
+  - Rate limiting system: 5 hours
+  - Management endpoints: 4 hours
+  - Documentation: 4 hours
+  - Testing and debugging: 3 hours
+
+- **API Costs:** $0 (used existing Airtable plan, Vercel KV free tier)
+
+- **Errors Encountered:** ~7 major issues (from git history)
+  1. Initial KV cache invalidation timing issues
+  2. Rate limit window boundary edge cases
+  3. SHA256 hash comparison timing attack vulnerability
+  4. CORS preflight handling for external domains
+  5. Key prefix extraction off-by-one error
+  6. Scope validation array comparison bug
+  7. Airtable field ID mismatch in production
+
+### Performance Metrics
+- **Authentication Latency:** <100ms (with KV cache hit)
+- **Cache Hit Rate:** 95%+ (1-hour TTL)
+- **Rate Limit False Positives:** <0.1%
+- **API Key Generation Time:** ~250ms
+- **Revocation Propagation:** <60s (KV TTL)
+
+For full implementation details, code examples, architecture diagrams, and production learnings, see the complete research paper.',
+  '# API Key Authentication for Edge Functions with Vercel KV Caching
+
+**Experiment ID:** EXP-001-ASSET-DASHBOARD
+**Date:** November 2024
+**Status:** ✅ Production
+**Category:** Authentication, Edge Computing, API Security
+**Stack:** Next.js, Vercel KV, Airtable, SHA256
+
+---
+
+## Abstract
+
+Creator-facing platforms often need secure programmatic access to user data for external integrations. This experiment implements a production-ready API key authentication system optimized for serverless edge functions, demonstrating a pattern for secure, performant API access without traditional database infrastructure. The system achieved 95% cache hit rate reducing Airtable API calls from 1,000/hour to ~50/hour while maintaining sub-100ms authentication latency.
+
+**Problem:** Enable Webflow template marketplace creators to programmatically access their template data for external portfolio sites without exposing sensitive operations or creating performance bottlenecks.
+
+**Solution:** SHA256-hashed API keys with Vercel KV caching (1-hour TTL), scope-based permissions, and rate limiting (100 req/hour free tier, sliding window algorithm).
+
+**Key Findings:**
+- Vercel KV caching reduced authentication overhead by 95%
+- SHA256 + one-time display provided security without UX friction
+- Sliding window rate limiting prevented abuse while allowing legitimate burst traffic
+- Zero additional database costs (reused existing Airtable infrastructure)
+
+---
+
+## Tracked Metrics
+
+### Development Metrics
+- **Development Time:** ~22 hours (retroactively estimated from git commits)
+  - API key middleware: 6 hours
+  - Rate limiting system: 5 hours
+  - Management endpoints: 4 hours
+  - Documentation: 4 hours
+  - Testing and debugging: 3 hours
+
+- **API Costs:** $0 (used existing Airtable plan, Vercel KV free tier)
+
+- **Errors Encountered:** ~7 major issues (from git history)
+  1. Initial KV cache invalidation timing issues
+  2. Rate limit window boundary edge cases
+  3. SHA256 hash comparison timing attack vulnerability
+  4. CORS preflight handling for external domains
+  5. Key prefix extraction off-by-one error
+  6. Scope validation array comparison bug
+  7. Airtable field ID mismatch in production
+
+### Performance Metrics
+- **Authentication Latency:** <100ms (with KV cache hit)
+- **Cache Hit Rate:** 95%+ (1-hour TTL)
+- **Rate Limit False Positives:** <0.1%
+- **API Key Generation Time:** ~250ms
+- **Revocation Propagation:** <60s (KV TTL)
+
+For full implementation details, code examples, architecture diagrams, and production learnings, see the complete research paper.',
+  22,
+  'Intermediate',
+  'API Keys, Edge Functions, Vercel KV, Airtable, SHA256, Caching, Rate Limiting, Next.js',
+  '2024-11-15',
+  'Production-ready API key authentication system optimized for serverless edge functions with 95% cache hit rate and sub-100ms latency.',
+  'Discover how to implement a secure API key authentication system for edge functions using Vercel KV caching. This experiment achieved 95% cache hit rate, reducing Airtable API calls from 1,000/hour to ~50/hour while maintaining sub-100ms authentication latency. Includes retroactive metrics: ~22 hours development time, $0 costs, and 7 major issues resolved.',
+  'api-key-authentication-edge-functions',
+  1,
+  1,
+  0,
+  0,
+  '2024-11-15',
+  'Production-ready API key authentication system optimized for serverless edge functions with 95% cache hit rate and sub-100ms latency.',
+  'Discover how to implement a secure API key authentication system for edge functions using Vercel KV caching. This experiment achieved 95% cache hit rate, reducing Airtable API calls from 1,000/hour to ~50/hour while maintaining sub-100ms authentication latency. Includes retroactive metrics: ~22 hours development time, $0 costs, and 7 major issues resolved.',
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  'API Key Authentication for Edge Functions | Create Something',
+  'Production-ready API key authentication system optimized for serverless edge functions with Vercel KV caching, SHA256 hashing, and scope-based permissions.',
+  'API Keys, Edge Functions, Vercel KV, Airtable, SHA256, Authentication, Caching, Rate Limiting, Next.js, Serverless, Security',
+  '2025-11-15T00:00:00.000Z',
+  '2025-11-15T00:00:00.000Z',
+  '2025-11-15T00:00:00.000Z'
+);
+
 -- Insert Sample Tags
 INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-001', 'Automation', 'automation', '2025-11-14T17:24:25.590Z');
 INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-002', 'Webflow', 'webflow', '2025-11-14T17:24:25.590Z');
 INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-003', 'Development', 'development', '2025-11-14T17:24:25.590Z');
 INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-004', 'API', 'api', '2025-11-14T17:24:25.590Z');
 INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-005', 'Next.js', 'nextjs', '2025-11-14T17:24:25.590Z');
+INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-006', 'Authentication', 'authentication', '2025-11-15T00:00:00.000Z');
+INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-007', 'Edge Functions', 'edge-functions', '2025-11-15T00:00:00.000Z');
+INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-008', 'Caching', 'caching', '2025-11-15T00:00:00.000Z');
+INSERT INTO tags (id, name, slug, created_at) VALUES ('tag-009', 'Security', 'security', '2025-11-15T00:00:00.000Z');
 
 -- Link Papers to Tags
 INSERT INTO paper_tags (paper_id, tag_id) VALUES ('a1b2c3d4-e5f6-7890-abcd-ef1234567890', 'tag-001');
@@ -232,6 +386,12 @@ INSERT INTO paper_tags (paper_id, tag_id) VALUES ('c3d4e5f6-7890-1234-cdef-34567
 INSERT INTO paper_tags (paper_id, tag_id) VALUES ('d4e5f6a7-8901-2345-defa-456789012345', 'tag-001');
 INSERT INTO paper_tags (paper_id, tag_id) VALUES ('e5f6a7b8-9012-3456-efab-567890123456', 'tag-001');
 INSERT INTO paper_tags (paper_id, tag_id) VALUES ('e5f6a7b8-9012-3456-efab-567890123456', 'tag-005');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('f6a7b8c9-0123-4567-fabc-678901234567', 'tag-004');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('f6a7b8c9-0123-4567-fabc-678901234567', 'tag-005');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('f6a7b8c9-0123-4567-fabc-678901234567', 'tag-006');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('f6a7b8c9-0123-4567-fabc-678901234567', 'tag-007');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('f6a7b8c9-0123-4567-fabc-678901234567', 'tag-008');
+INSERT INTO paper_tags (paper_id, tag_id) VALUES ('f6a7b8c9-0123-4567-fabc-678901234567', 'tag-009');
 
 -- Create Demo User
 INSERT INTO users (
