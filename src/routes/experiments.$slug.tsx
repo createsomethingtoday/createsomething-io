@@ -13,7 +13,7 @@ interface Env {
   STORAGE: R2Bucket
 }
 
-// Cache bust: v2 - using html_content directly from D1
+// Cache bust: v3 - experiment format deployment verification
 
 export const Route = createFileRoute('/experiments/$slug')({
   component: ExperimentDetailPage,
@@ -140,6 +140,9 @@ export const Route = createFileRoute('/experiments/$slug')({
       if (!paperResult) {
         throw new Error('Experiment not found')
       }
+
+      console.log(`✅ Using D1 database for experiment: ${slug}`)
+      console.log(`📄 HTML content preview: ${paperResult.html_content?.substring(0, 150)}...`)
 
       // Fetch related papers from the same category
       const relatedResult = await env.DB.prepare(`
