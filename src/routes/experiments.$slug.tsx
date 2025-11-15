@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ArticleHeader } from '../../components/ArticleHeader'
-import { ArticleContent } from '../../components/ArticleContent'
-import { ShareButtons } from '../../components/ShareButtons'
-import { RelatedArticles } from '../../components/RelatedArticles'
-import { getMockPaperBySlug, getMockPapersByCategory } from '../../data/mockPapers'
-import type { Paper } from '../../types/paper'
+import { ArticleHeader } from '../components/ArticleHeader'
+import { ArticleContent } from '../components/ArticleContent'
+import { ShareButtons } from '../components/ShareButtons'
+import { RelatedArticles } from '../components/RelatedArticles'
+import { getMockPaperBySlug, getMockPapersByCategory } from '../data/mockPapers'
+import type { Paper } from '../types/paper'
 
 interface Env {
   DB: D1Database
