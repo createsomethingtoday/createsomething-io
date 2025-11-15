@@ -16,10 +16,10 @@ export function Footer() {
             className="text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Get new notes when they're published
+              Stay updated with new experiments
             </h2>
             <p className="text-white/60 mb-8 max-w-2xl mx-auto">
-              No regular schedule, no marketing. Just practical notes on systems, architecture, and automation when I have something worth sharing.
+              Get notified when new research is published. Real metrics, tracked experiments, honest learnings from building with AI.
             </p>
 
             {/* Newsletter Form */}
@@ -54,7 +54,7 @@ export function Footer() {
                 CREATE SOMETHING
               </div>
               <p className="text-white/60 text-sm max-w-md mb-6">
-                Notes on building systems — patterns from working with automation, infrastructure, and marketplace architecture. No fluff, just what works.
+                AI-native development research with tracked experiments. Every paper includes real metrics: time, costs, errors, and learnings.
               </p>
               {/* Social Links */}
               <div className="flex items-center gap-4">
@@ -115,28 +115,28 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Categories */}
+            {/* The Ecosystem */}
             <div>
-              <h3 className="text-white font-semibold mb-4">Categories</h3>
+              <h3 className="text-white font-semibold mb-4">The Ecosystem</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/category/automation" className="text-white/60 hover:text-white text-sm transition-colors">
-                    Automation
-                  </Link>
+                  <a href="https://createsomething.space" className="text-white/60 hover:text-white text-sm transition-colors">
+                    .space → Try Experiments
+                  </a>
                 </li>
                 <li>
-                  <Link to="/category/development" className="text-white/60 hover:text-white text-sm transition-colors">
-                    Development
-                  </Link>
+                  <a href="https://createsomething.agency" className="text-white/60 hover:text-white text-sm transition-colors">
+                    .agency → Get Help
+                  </a>
                 </li>
                 <li>
-                  <Link to="/category/webflow" className="text-white/60 hover:text-white text-sm transition-colors">
-                    Webflow
-                  </Link>
+                  <a href="https://github.com/createsomethingtoday" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white text-sm transition-colors">
+                    GitHub → View Source
+                  </a>
                 </li>
                 <li>
-                  <Link to="/contact" className="text-white/60 hover:text-white text-sm transition-colors">
-                    Contact
+                  <Link to="/methodology" className="text-white/60 hover:text-white text-sm transition-colors">
+                    Methodology
                   </Link>
                 </li>
               </ul>
