@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@tanstack/react-router'
 import { ArticleHeader } from '../../components/ArticleHeader'
 import { ArticleContent } from '../../components/ArticleContent'
 import { ShareButtons } from '../../components/ShareButtons'
@@ -17,7 +17,7 @@ export const Route = createFileRoute('/papers/$slug')({
   component: PaperDetailPage,
   head: ({ loaderData }) => {
     const { paper } = loaderData
-    const url = `https://createsomething.io/papers/${paper.slug}`
+    const url = `https://createsomething.io/experiments/${paper.slug}`
     const imageUrl = paper.featured_image || paper.thumbnail_image || 'https://createsomething.io/og-image.png'
 
     // Calculate word count for schema
@@ -92,70 +92,14 @@ export const Route = createFileRoute('/papers/$slug')({
     }
   },
   loader: async ({ context, params }) => {
-    try {
-      const env = (context as any).env as Env
-      const { slug } = params
+    const { slug } = params
 
-      // Check if DB is available (production/wrangler dev)
-      if (!env?.DB) {
-        console.log('⚠️  Running in local dev mode - using mock data for paper:', slug)
-        const paper = getMockPaperBySlug(slug)
-        if (!paper) {
-          throw new Error('Paper not found')
-        }
-        // Get related papers from the same category
-        const relatedPapers = getMockPapersByCategory(paper.category)
-          .filter(p => p.id !== paper.id)
-          .slice(0, 4)
-
-        return {
-          paper,
-          relatedPapers
-        }
-      }
-
-      // Fetch the specific paper by slug
-      const paperResult = await env.DB.prepare(`
-        SELECT
-          id, title, category, content, html_content, reading_time,
-          difficulty_level, technical_focus, published_on, excerpt_short,
-          excerpt_long, slug, featured, published, is_hidden, archived,
-          date, excerpt, description, created_at, updated_at, published_at,
-          ascii_art, ascii_thumbnail, prerequisites, resource_downloads,
-          video_walkthrough_url, interactive_demo_url
-        FROM papers
-        WHERE slug = ? AND published = 1 AND is_hidden = 0 AND archived = 0
-        LIMIT 1
-      `).bind(slug).first()
-
-      if (!paperResult) {
-        throw new Error('Paper not found')
-      }
-
-      // Fetch related papers from the same category
-      const relatedResult = await env.DB.prepare(`
-        SELECT
-          id, title, category, reading_time, excerpt_short,
-          slug, ascii_art, ascii_thumbnail, published_at, date,
-          difficulty_level
-        FROM papers
-        WHERE category = ?
-          AND id != ?
-          AND published = 1
-          AND is_hidden = 0
-          AND archived = 0
-        ORDER BY RANDOM()
-        LIMIT 4
-      `).bind(paperResult.category, paperResult.id).all()
-
-      return {
-        paper: paperResult as Paper,
-        relatedPapers: (relatedResult.results || []) as Paper[]
-      }
-    } catch (error) {
-      console.error('Error fetching paper:', error)
-      throw error
-    }
+    // Redirect /papers/* to /experiments/*
+    throw redirect({
+      to: '/experiments/$slug',
+      params: { slug },
+      statusCode: 301 // Permanent redirect
+    })
   }
 })
 
