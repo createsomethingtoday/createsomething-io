@@ -120,6 +120,38 @@ Want to fork an experiment and try it yourself?
 
 → **[createsomething.space](https://createsomething.space)** — Community playground for breaking things and learning.
 
+## Open Source Contributions
+
+Following the Valve model of delivering value to the ecosystem, not just extracting from it.
+
+### Upstream Contributions
+
+Every experiment tracks contributions made to the tools we use:
+
+- **TanStack Start** — Bug fixes, documentation improvements, pattern submissions
+- **Cloudflare Workers** — Edge case reports, D1 optimizations, community patterns
+- **Tailwind CSS** — Workflow improvements, plugin contributions
+
+Tracked per experiment in research papers. When we find issues, we fix them upstream.
+
+### Why This Matters
+
+**Microsoft extracts value** → Walled gardens, lock-in, B2B extraction
+
+**Valve delivers value** → 100+ open source developers, Linux ecosystem improvements
+
+**CREATE SOMETHING delivers value** → Improve the tools, not just use them
+
+The moat isn't code—it's **interpretive velocity + ecosystem influence**.
+
+By the time competitors study experiment #10, we've:
+1. Made the tools better
+2. Built relationships with maintainers
+3. Influenced ecosystem direction
+4. Created expertise in both using AND improving the stack
+
+See individual experiment papers for specific upstream contributions made during development.
+
 ## License
 
 MIT License - See [LICENSE](./LICENSE) for details
