@@ -26,7 +26,7 @@ export function PaperCard({ paper, rotation = 0, index = 0 }: PaperCardProps) {
     : null
 
   return (
-    <Link to={`/papers/${paper.slug}`} className="block h-full">
+    <Link to={`/experiments/${paper.slug}`} className="block h-full">
       <motion.article
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
