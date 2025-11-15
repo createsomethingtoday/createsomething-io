@@ -13,6 +13,8 @@ interface Env {
   STORAGE: R2Bucket
 }
 
+// Cache bust: v2 - using html_content directly from D1
+
 export const Route = createFileRoute('/experiments/$slug')({
   component: ExperimentDetailPage,
   head: ({ loaderData }) => {
