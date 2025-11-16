@@ -9,6 +9,16 @@ const config = defineConfig({
   server: {
     port: 3000,
   },
+  build: {
+    // Force new asset hashes to bust client cache
+    rollupOptions: {
+      output: {
+        entryFileNames: `assets/[name]-[hash]-v${Date.now()}.js`,
+        chunkFileNames: `assets/[name]-[hash]-v${Date.now()}.js`,
+        assetFileNames: `assets/[name]-[hash]-v${Date.now()}.[ext]`
+      }
+    }
+  },
   plugins: [
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
     // this is the plugin that enables path aliases
